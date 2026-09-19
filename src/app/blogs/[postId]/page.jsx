@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../components/Post';
+
 
 //to do: fetch data from api
 const blogsData = [
@@ -50,15 +50,27 @@ const blogsData = [
   }
 ];
 
-const BlocksPage = () => {
-  return (
-    <div>
-      <h2>Our Blogs</h2>
-      {blogsData.map((post) => (
-        <Post key={post.id} post={post} />
-      ))}
-    </div>
-  );
+
+const postDetailPage = async ({params}) => {
+
+    const{postId}= await params;
+    //TODO: fetch data from database
+    const post= blogsData.find(post => post.id === parseInt(postId));
+    // console.log(post,postId);
+
+    return (
+        <div>
+            <h2>Post Detail Page: {postId} </h2>
+            {
+                post && <div>
+                   <h3>{post.title}</h3>
+                   <p>Posted by: {post.author}</p>
+                   <p>{post.description}</p>
+
+                </div>
+            }
+        </div>
+    );
 };
 
-export default BlocksPage;
+export default postDetailPage;

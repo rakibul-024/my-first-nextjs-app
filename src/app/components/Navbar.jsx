@@ -1,14 +1,22 @@
+'use client'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 import React from 'react';
 
+
 const Navbar = () => {
+  const pathname = usePathname()
 
     const links= <>
-     <li><Link href="/docs">Docs</Link></li>
-     <li><Link href="/about">About</Link></li>
-     <li><Link href="/blogs">Blogs</Link></li>
-     <li><Link href="/showcase">Showcase</Link></li>
-     <li><Link href="/about/developers">Developers</Link></li>
+     
+     <li><Link  className={`link no-underline ${pathname === '/docs' ? 'text-blue-500' : ''}`} href="/docs">Docs</Link></li>
+     <li><Link className={`link no-underline ${pathname === '/about' ? 'text-blue-500' : ''}`} href="/about">About</Link></li>
+     <li><Link className={`link no-underline  ${pathname === '/blogs' ? 'text-blue-500' : ''}`} href="/blogs">Blogs</Link></li>
+     <li><Link className={`link no-underline ${pathname === '/showcase' ? 'text-blue-500' : ''}`} href="/showcase">Showcase</Link></li>
+     <li><Link className={`link no-underline ${pathname === '/about/developers' ? 'text-blue-500' : ''}`} href="/about/developers">Developers</Link></li>
+     <li><Link className={`link no-underline ${pathname === '/dashboard' ? 'text-blue-500' : ''}`} href="/dashboard">Dashboard</Link></li>
+     <li><Link className={`link no-underline ${pathname === '/users' ? 'text-blue-500' : ''}`} href="/users">Users</Link></li>
+     <li><Link className={`link no-underline ${pathname === '/comments' ? 'text-blue-500' : ''}`} href="/comments">Comments</Link></li>
     
     </>
     return (
